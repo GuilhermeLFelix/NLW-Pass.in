@@ -28,7 +28,7 @@ class AttendeesRepository:
                 database.session.rollback()
                 raise ex
             
-    def get_attendee_by_id(self, attendee_id: str):
+    def get_attendee_badge_by_id(self, attendee_id: str):
         with db_connection_handler as database:
             try:
                 attendee = (
