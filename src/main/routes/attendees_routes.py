@@ -17,5 +17,13 @@ def get_attendees_batch(attende_id):
     attendees_handle = AttendeesHandler() 
     http_request = HttpRequest(param={"attende_id": attende_id})
 
-    http_response = attendees_handle.find_attendee_badge (http_request)
+    http_response = attendees_handle.find_attendee_badge(http_request)
+    return jsonify(http_response.body), http_response.status_code
+
+@attendees_route_bp.route("/events/<attendee_id>/attendees", methods=["GET"])
+def get_attendees(attende_id):
+    attendees_handle = AttendeesHandler() 
+    http_request = HttpRequest(param={"attende_id": attende_id})
+
+    http_response = attendees_handle.find_attendees_from_event(http_request)
     return jsonify(http_response.body), http_response.status_code
